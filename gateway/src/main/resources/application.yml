@@ -10,3 +10,11 @@ spring:
         # 比如 Sentinel 控制台添加了一个限流规则，会把规则数据 push 给这个 Http Server 接收，Http Server 再将规则注册到 Sentinel 中
         clientIp: 192.168.115.127
         port: 8666
+      datasource:
+                ds:
+                  nacos:
+                    serverAddr: 49.235.114.120:8848
+                    dataId: gateway-sentinel
+                    groupId: DEFAULT_GROUP
+                    data-type: json
+                    rule-type: flow
