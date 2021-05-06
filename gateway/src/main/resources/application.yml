@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    sentinel:
+      transport:
+        ## VM
+        ##-Djava.net.preferIPv4Stack=true -Dcsp.sentinel.dashboard.server=49.235.114.120:8080 -Dcsp.sentinel.api.port=8666 -Dproject.name=gateway -Dcsp.sentinel.app.type=1
+        dashboard: localhost:8080
+        eager: true
+        #spring.cloud.sentinel.transport.port 端口配置会在应用对应的机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互。
+        # 比如 Sentinel 控制台添加了一个限流规则，会把规则数据 push 给这个 Http Server 接收，Http Server 再将规则注册到 Sentinel 中
+        clientIp: 192.168.115.127
+        port: 8666
