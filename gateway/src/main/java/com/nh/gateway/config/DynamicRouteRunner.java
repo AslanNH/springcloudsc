@@ -23,7 +23,7 @@ import java.util.concurrent.Executor;
  **/
 @Component
 @NacosPropertySource(dataId = "${nacos.data-id}", autoRefreshed = true, groupId = "${nacos.group}")
-public class DynamicRouteServiceImplByNacos implements CommandLineRunner {
+public class DynamicRouteRunner implements CommandLineRunner {
 
     @Autowired
     private DynamicRouteServiceImpl dynamicRouteService;
