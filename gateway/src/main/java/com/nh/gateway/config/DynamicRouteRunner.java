@@ -46,6 +46,7 @@ public class DynamicRouteRunner implements CommandLineRunner {
             configService.addListener(nacosGatewayProperties.getDataId(), nacosGatewayProperties.getGroupId(), new Listener()  {
                 @Override
                 public void receiveConfigInfo(String configInfo) {
+                    System.out.println(configInfo);
                     updateDefinition(configInfo);
                 }
                 @Override

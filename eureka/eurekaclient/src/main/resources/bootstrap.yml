@@ -1,0 +1,16 @@
+server:
+  port: 8763
+spring:
+  application:
+    name: eureka
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 49.235.114.120:8848   #注册到nacos注册中心
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # * 在yaml 文件属于关键字，所以需要加引号

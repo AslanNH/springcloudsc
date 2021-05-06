@@ -1,11 +1,8 @@
 package com.nh.gateway.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.gateway.event.RefreshRoutesEvent;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionWriter;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -16,12 +13,10 @@ import reactor.core.publisher.Mono;
  * @Version 1.0
  **/
 @Service
-public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
+public class DynamicRouteServiceImpl {
 
     @Autowired
     private RouteDefinitionWriter routeDefinitionWriter;
-
-    private ApplicationEventPublisher publisher;
 
 
     /**
@@ -31,7 +26,6 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
      */
     public String add(RouteDefinition definition) {
         routeDefinitionWriter.save(Mono.just(definition)).subscribe();
-        this.publisher.publishEvent(new RefreshRoutesEvent(this));
         return "success";
     }
 
@@ -49,7 +43,6 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
         }
         try {
             routeDefinitionWriter.save(Mono.just(definition)).subscribe();
-            this.publisher.publishEvent(new RefreshRoutesEvent(this));
             return "success";
         } catch (Exception e) {
             return "update route  fail";
@@ -73,9 +66,5 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 
     }
 
-    @Override
-    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
-        this.publisher = applicationEventPublisher;
-    }
 
 }
