@@ -1,0 +1,15 @@
+server:
+  port: 8771
+spring:
+  application:
+    name: zipkinserver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 49.235.114.120:8848   #注册到nacos注册中心
+
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false

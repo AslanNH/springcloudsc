@@ -7,7 +7,20 @@ spring:
     nacos:
       discovery:
         server-addr: 49.235.114.120:8848   #注册到nacos注册中心
-
+    # sleuth 配置
+    sleuth:
+      web:
+        client:
+          enabled: true
+      sampler:
+        probability: 1.0 # 采样比例为: 0.1(即10%),设置的值介于0.0到1.0之间，1.0则表示全部采集。
+    # zipkin 配置
+    zipkin:
+      base-url: http://localhost:8771  # 指定了Zipkin服务器的地址
+      # 关闭服务发现，否则Spring Cloud会把zipkin的url当做服务名称
+      discoveryClientEnabled: false
+      sender:
+        type: web  # 设置使用http的方式传输数据
 
 nacos:
   address: 49.235.114.120:8848
