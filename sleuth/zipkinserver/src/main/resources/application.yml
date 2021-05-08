@@ -7,9 +7,20 @@ spring:
     nacos:
       discovery:
         server-addr: 49.235.114.120:8848   #注册到nacos注册中心
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_cloud_zipkin?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
 
+sleuth:
+  enabled: false
+zipkin:
+  storage:
+    type: mysql
 management:
   metrics:
     web:
       server:
         auto-time-requests: false
+
